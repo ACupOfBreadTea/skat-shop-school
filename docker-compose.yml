@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+
+    wordpress: 
+        image: wordpress:latest
+        ports:
+            - 8000:80
+        depends_on: 
+            - mysql
+        volumes:
+            - ./www:/var/www/html
+        environment:
+             WORDPRESS_DB_HOST: mysql:3306
+             WORDPRESS_DB_USER: wordpress
+             WORDPRESS_DB_PASSWORD: wordpress
+    mysql:
+        image: mysql:5.7
+        expose: 
+            - 3306
+        environment:
+            MYSQL_ROOT_PASSWORD: ruthpw
+            MYSQL_DATABASE: wordpress
+            MYSQL_USER: wordpress
+            MYSQL_PASSWORD: wordpress
+        volumes:
+            - ./mysql:/var/lib/mysql
