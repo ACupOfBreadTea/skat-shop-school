@@ -1,1 +1,1 @@
-# skat-shop-school
+# skat(e)-shop-school
